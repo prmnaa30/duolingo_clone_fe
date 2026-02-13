@@ -5,7 +5,9 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxt/image',
     '@pinia/nuxt',
-    '@vite-pwa/nuxt'
+    '@vite-pwa/nuxt',
+    '@vueuse/nuxt',
+    '@vueuse/motion'
   ],
 
   devtools: {

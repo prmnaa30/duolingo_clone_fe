@@ -17,6 +17,9 @@
     "@nuxt/ui": "^4.4.0",
     "@pinia/nuxt": "0.11.3",
     "@vite-pwa/nuxt": "1.1.1",
+    "@vueuse/motion": "^3.0.3",
+    "@vueuse/nuxt": "^14.2.1",
+    "howler": "^2.2.4",
     "nuxt": "^4.3.1",
     "tailwindcss": "^4.1.18"
   },
