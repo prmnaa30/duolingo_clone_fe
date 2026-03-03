@@ -1,18 +1,84 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
+@plugin "@tailwindcss/typography";
 
-@theme static {
-  --font-sans: 'Public Sans', sans-serif;
+@theme {
+  --font-sans-serif: 'Nunito', sans-serif;
 
-  --color-green-50: #EFFDF5;
-  --color-green-100: #D9FBE8;
-  --color-green-200: #B3F5D1;
-  --color-green-300: #75EDAE;
-  --color-green-400: #00DC82;
-  --color-green-500: #00C16A;
-  --color-green-600: #00A155;
-  --color-green-700: #007F45;
-  --color-green-800: #016538;
-  --color-green-900: #0A5331;
-  --color-green-950: #052E16;
+  --color-primary: var(--primary);
+  --color-primary-fg: var(--primary-fg);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-fg: var(--secondary-fg);
+
+  --color-surface: var(--surface);
+  --color-surface-grey: var(--surface-grey);
+  --color-bg: var(--bg);
+
+  --color-text-title: var(--text-title);
+  --color-text-body: var(--text-body);
+  --color-text-muted: var(--text-muted);
+  --color-grey: var(--grey);
+
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+}
+
+:root {
+  --primary: #f97316; 
+  --primary-fg: #ffffff;
+
+  --secondary: #334155; 
+  --secondary-fg: #ffffff;
+
+  --bg: #fffbf7; 
+  --surface: #ffffff; 
+  --surface-grey: #f1f5f9; 
+
+  --text-title: #0f172a; 
+  --text-body: #334155; 
+  --text-muted: #64748b; 
+  --grey: #e2e8f0; 
+
+  --success: #22c55e; 
+  --warning: #eab308; 
+  --error: #ef4444; 
+}
+
+.dark {
+  --primary: #fb923c; 
+  --primary-fg: #1c1917;
+
+  --secondary: #94a3b8; 
+  --secondary-fg: #0f172a;
+
+  --bg: #0c0a09; 
+  --surface: #1c1917; 
+  --surface-grey: #292524; 
+
+  --text-title: #fafaf9; 
+  --text-body: #e7e5e4; 
+  --text-muted: #a8a29e; 
+  --grey: #44403c; 
+
+  --success: #4ade80;
+  --warning: #facc15;
+  --error: #f87171;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-body);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+  font-family: 'Nunito', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-title);
+  font-weight: 700;
 }

@@ -7,7 +7,9 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@vite-pwa/nuxt',
     '@vueuse/nuxt',
-    '@vueuse/motion'
+    '@vueuse/motion',
+    '@vueuse/sound/nuxt',
+    '@nuxt/fonts'
   ],
 
   devtools: {
@@ -16,11 +18,28 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  colorMode: {
+    preference: 'system',
+    fallback: 'light'
+  },
+
+  runtimeConfig: {
+    public: {
+      baseApi: ''
+    }
+  },
+
   routeRules: {
     '/': { prerender: true }
   },
 
   compatibilityDate: '2025-01-15',
+
+  vite: {
+    server: {
+      allowedHosts: ['.ngrok-free.dev']
+    }
+  },
 
   eslint: {
     config: {
@@ -28,6 +47,25 @@ export default defineNuxtConfig({
         commaDangle: 'never',
         braceStyle: '1tbs'
       }
+    }
+  },
+
+  fonts: {
+    families: [{ name: 'Nunito', provider: 'google' }]
+  },
+
+  icon: {
+    customCollections: [
+      {
+        prefix: 'custom',
+        dir: './app/assets/icons'
+      }
+    ]
+  },
+
+  sound: {
+    sounds: {
+      scan: true
     }
   }
 })
