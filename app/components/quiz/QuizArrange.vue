@@ -2,6 +2,7 @@
   <div class="flex flex-col h-full">
     <div class="flex items-start gap-4 mb-6 px-2">
       <img
+        :draggable="false"
         :src="mochiScrambledKana"
         class="w-24 drop-shadow-md"
         alt="Mochi"

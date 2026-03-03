@@ -70,11 +70,13 @@ export const useAuthStore = defineStore('auth', () => {
         await navigateTo('/login')
       }
 
-      toast.add({
-        title: 'Error',
-        description: 'Data user tidak valid, silahkan login kembali',
-        color: 'error'
-      })
+      if (import.meta.client) {
+        toast.add({
+          title: 'Sesi Berakhir',
+          description: 'Data user tidak valid, silahkan login kembali',
+          color: 'error'
+        })
+      }
     }
   }
 

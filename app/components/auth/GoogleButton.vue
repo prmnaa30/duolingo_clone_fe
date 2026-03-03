@@ -6,6 +6,7 @@
   >
     <template #iconLeft>
       <img
+        :draggable="false"
         :src="google"
         class="h-4"
       >

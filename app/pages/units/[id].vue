@@ -50,7 +50,8 @@
         class="text-center py-10"
       >
         <img
-          src="/images/mochi.webp"
+          :draggable="false"
+          :src="mochiSad"
           class="w-32 mx-auto mb-4 grayscale opacity-50"
         >
         <h3 class="text-error font-bold">
@@ -89,6 +90,7 @@
 <script setup lang="ts">
 import UnitGuide from '~/components/unit/UnitGuide.vue'
 import UnitQuizHistory from '~/components/unit/UnitQuizHistory.vue'
+import mochiSad from '~/assets/images/mochi_sad.webp'
 
 interface UnitData {
   id?: string

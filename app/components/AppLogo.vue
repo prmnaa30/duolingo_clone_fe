@@ -1,6 +1,7 @@
 <template>
   <div class="flex items-center gap-2 text-primary">
     <img
+      :draggable="false"
       :src="flatMochi"
       class="h-10"
     >

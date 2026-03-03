@@ -19,6 +19,7 @@
       </div>
 
       <img
+        :draggable="false"
         :src="mochiWondering"
         class="w-24 drop-shadow-md"
         alt="Mochi"

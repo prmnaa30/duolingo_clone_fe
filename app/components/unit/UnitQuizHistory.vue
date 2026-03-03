@@ -29,6 +29,7 @@
       class="text-center py-12 bg-surface rounded-3xl border border-grey/50"
     >
       <img
+        :draggable="false"
         :src="mochiCannotFind"
         class="w-24 mx-auto mb-4 opacity-50 grayscale"
       >

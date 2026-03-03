@@ -16,6 +16,7 @@
     <div class="w-full mt-4 sticky bottom-24 z-50">
       <div class="max-w-md mx-auto flex gap-4 items-center">
         <img
+          :draggable="false"
           src="/images/mochi.webp"
           class="w-16 h-16 -mb-2 drop-shadow-lg animate-bounce-slow hidden sm:block"
         >

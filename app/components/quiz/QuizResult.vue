@@ -1,6 +1,7 @@
 <template>
   <div class="flex-1 flex flex-col items-center justify-center p-6 text-center">
     <img
+      :draggable="false"
       v-motion
       :src="quizStore.result?.is_passed ? mochiHappy : mochiSad"
       class="w-40 mb-4 drop-shadow-xl"
