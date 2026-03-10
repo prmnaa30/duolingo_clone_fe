@@ -2,15 +2,6 @@
   <div class="min-h-screen bg-bg flex flex-col relative pb-24">
     <div class="bg-surface/80 backdrop-blur-md border-b border-grey px-4 py-4 sticky top-0 z-40">
       <UContainer class="max-w-2xl mx-auto flex gap-4 items-center">
-        <button
-          class="p-2 pb-0.5 rounded-md bg-grey border border-[color-mix(in_srgb,var(--color-grey),20%_black)] hover:bg-gray-400/70 transition-colors"
-          @click="router.push('/learning-map')"
-        >
-          <UIcon
-            name="i-heroicons-arrow-left"
-            class="text-text-title size-6"
-          />
-        </button>
         <div>
           <h1 class="text-xl font-extrabold text-text-title">
             Daftar Kana
@@ -81,7 +72,6 @@ interface Character {
   mastery_level: number
 }
 
-const router = useRouter()
 const config = useRuntimeConfig()
 const authStore = useAuthStore()
 

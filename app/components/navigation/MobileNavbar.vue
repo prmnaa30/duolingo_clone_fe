@@ -15,24 +15,32 @@ const navLinks = ref<NavigationMenuItem[]>([
     icon: 'i-custom:home',
     to: '/learning-map',
     ui: {
-      link: 'text-orange-500!',
-      linkLeadingIcon: 'size-8 text-orange-500!'
+      link: 'text-[#C64602]!',
+      linkLeadingIcon: 'size-8 text-[#C64602]!'
     }
   },
   {
     icon: 'i-custom:kana',
     to: '/kana',
     ui: {
-      link: 'text-green-500!',
-      linkLeadingIcon: 'size-8 text-green-500!'
+      link: 'text-[#20C602]!',
+      linkLeadingIcon: 'size-8 text-[#20C602]!'
+    }
+  },
+  {
+    icon: 'i-custom:leaderboard',
+    to: '/leaderboard',
+    ui: {
+      link: 'text-[#A802C6]!',
+      linkLeadingIcon: 'size-8 text-[#A802C6]!'
     }
   },
   {
     icon: 'i-custom:profile',
     to: '/profile',
     ui: {
-      link: 'text-blue-500!',
-      linkLeadingIcon: 'size-8 text-blue-500!'
+      link: 'text-[#0282C6]!',
+      linkLeadingIcon: 'size-8 text-[#0282C6]!'
     }
   }
 ])

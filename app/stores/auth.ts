@@ -27,6 +27,7 @@ interface User {
     next_heart_in: Date | null
     rank: number
   }
+  provider: string
 }
 
 interface AuthResponse {
@@ -147,13 +148,47 @@ export const useAuthStore = defineStore('auth', () => {
     }
   }
 
+  const updateProfile = async (payload: FormData) => {
+    try {
+      loading.value = true
+
+      const response = await $fetch(`${config.public.baseApi}/me/update`, {
+        method: 'POST',
+        headers: {
+          authorization: `Bearer ${token.value}`
+        },
+        body: payload
+      })
+
+      if (response) {
+        await fetchUser()
+      }
+
+      toast.add({
+        title: 'Berhasil!',
+        description: 'Profil kamu sudah diperbarui.',
+        color: 'success'
+      })
+    } catch (err: any) {
+      console.error(err)
+      toast.add({
+        title: 'Gagal menyimpan',
+        description: err.data?.message || 'Pastikan password lamamu benar.',
+        color: 'error'
+      })
+    } finally {
+      loading.value = false
+      navigateTo('/profile')
+    }
+  }
+
   const logout = async () => {
     try {
       loading.value = true
 
       await $fetch(`${BASE_API}/logout`, {
         method: 'POST',
-        headers: { Authorization: `Bearer ${token.value}` }
+        headers: { authorization: `Bearer ${token.value}` }
       })
     } catch (error) {
       console.warn('Logout error: ', error)
@@ -176,6 +211,7 @@ export const useAuthStore = defineStore('auth', () => {
     loginWithGoogle,
     login,
     register,
+    updateProfile,
     logout
   }
 })

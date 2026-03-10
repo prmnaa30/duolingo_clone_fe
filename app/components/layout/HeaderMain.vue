@@ -87,26 +87,15 @@
           </div>
         </div>
       </StatPopover>
-
-      <UColorModeButton />
-
-      <BaseButton @click="handleLogout">
-        Logout
-      </BaseButton>
     </UContainer>
   </header>
 </template>
 
 <script setup lang="ts">
-import BaseButton from '../ui/BaseButton.vue'
 import StatPopover from './StatsPopover.vue'
 
 const authStore = useAuthStore()
 const userStats = authStore.user?.stats
-
-const handleLogout = async () => {
-  await authStore.logout()
-}
 </script>
 
 <style scoped>

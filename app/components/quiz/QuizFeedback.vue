@@ -1,15 +1,18 @@
 <template>
-  <transition name="slide-up">
-    <div
-      v-if="show"
-      class="fixed bottom-0 w-full max-w-lg mx-auto border-t-2 p-6 pb-8 z-50 flex flex-col gap-4"
-      :class="[
-        isCorrect
-          ? 'bg-green-100 border-green-200'
-          : 'bg-red-100 border-red-200'
-      ]"
-    >
-      <div class="flex items-start gap-4">
+  <UDrawer
+    v-model:open="isOpen"
+    direction="bottom"
+    class="p-6 border-2 bg-surface flex flex-col rounded-t-3xl"
+    :class="[
+      isCorrect
+        ? 'border-success/50'
+        : 'border-error/50'
+    ]"
+    :handle="false"
+    :dismissible="false"
+  >
+    <template #content>
+      <div class="flex items-start gap-4 mb-4">
         <div
           class="w-6 h-6 rounded-full flex items-center justify-center mt-0.75"
           :class="isCorrect ? 'bg-green-500 text-white' : 'bg-red-500 text-white'"
@@ -51,24 +54,25 @@
 
       <BaseButton
         class="w-full h-12"
-        :color="isCorrect ? 'success' : 'danger'"
+        color="primary"
         @click="$emit('next')"
       >
         {{ isLastQuestion ? 'SELESAI' : 'LANJUT' }}
       </BaseButton>
-    </div>
-  </transition>
+    </template>
+  </UDrawer>
 </template>
 
 <script setup lang="ts">
 import BaseButton from '../ui/BaseButton.vue'
 
 defineProps({
-  show: Boolean,
   isCorrect: Boolean,
   isLastQuestion: Boolean,
   question: Object
 })
+
+const isOpen = defineModel('isOpen', { type: Boolean, default: false })
 
 defineEmits(['next'])
 </script>

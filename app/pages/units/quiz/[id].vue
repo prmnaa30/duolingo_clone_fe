@@ -61,7 +61,7 @@
       </div>
 
       <QuizFeedback
-        :show="showFeedback"
+        :is-open="showFeedback"
         :is-correct="isCorrect"
         :is-last-question="quizStore.isLastQuestion"
         :question="quizStore.currentQuestion"

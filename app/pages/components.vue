@@ -1,6 +1,6 @@
 <template>
   <div>
-    <BaseButton @click="audioStore.play('correct')">
+    <BaseButton @click="audioStore.play('correct'); show = !show">
       Correct
     </BaseButton>
 
@@ -10,31 +10,11 @@
     <QuizFillblank />
     <QuizMultipleChoice />
     <QuizResult /> -->
-    <UDrawer
-      v-model:open="show"
-      direction="bottom"
-    >
-      <template #content>
-        <article
-          v-motion-slide-visible-once-bottom
-          class="bg-surface rounded-3xl mt-4 p-6 sm:p-8 overflow-y-auto"
-        >
-          <div
-            class="prose prose-stone max-w-none
-            prose-headings:text-text-title prose-p:text-text-body prose-strong:text-primary prose-li:text-text-body
-            text-justify"
-            v-html="renderedContent"
-          />
-
-          <BaseButton
-            class="w-full h-12 mt-8"
-            @click="finishAndExit"
-          >
-            Lanjut Belajar
-          </BaseButton>
-        </article>
-      </template>
-    </UDrawer>
+    <WriteResult
+      v-model:is-open="show"
+      :score="85"
+      :feedback="'Bagus!'"
+    />
   </div>
 </template>
 
@@ -50,6 +30,15 @@ const md = new MarkdownIt({
   html: true,
   typographer: true
 })
+
+const route = useRoute()
+const config = useRuntimeConfig()
+const authStore = useAuthStore()
+const { data: leaderboardData } = await useFetch(`${config.public.baseApi}/leaderboard`, {
+  headers: { authorization: `Bearer ${authStore.token}` }
+})
+
+console.log(leaderboardData.value?.data)
 
 const summary_md = `
 # Hasil Kuis Kamu
