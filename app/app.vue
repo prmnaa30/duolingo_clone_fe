@@ -28,6 +28,8 @@ useSeoMeta({
 
 <template>
   <UApp :toaster="{ position: 'top-center' }">
+    <VitePwaManifest />
+
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
