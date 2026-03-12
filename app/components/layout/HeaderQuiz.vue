@@ -1,6 +1,6 @@
 <template>
   <header class="h-12 bg-surface">
-    <UContainer class="h-full flex items-center gap-4">
+    <UContainer class="h-full md:w-xl flex items-center gap-4">
       <UIcon
         name="i-heroicons-x-mark"
         class="w-6 h-6"

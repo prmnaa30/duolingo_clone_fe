@@ -16,8 +16,8 @@
           :key="chapter.id"
           class="mb-12 relative"
         >
-          <div class="sticky top-20 z-30 flex justify-center mb-8">
-            <div class="bg-secondary text-secondary-fg px-6 py-2 rounded-2xl shadow-lg font-bold text-sm border-2 border-surface">
+          <div class="sticky md:top-8 top-16 z-30 flex justify-center mb-8">
+            <div class="bg-secondary text-secondary-fg md:w-120 md:h-16 px-6 py-2 md:pt-4 rounded-2xl shadow-lg font-semibold text-sm md:text-xl md:text-center border-2 border-surface">
               {{ chapter.name }}
             </div>
           </div>

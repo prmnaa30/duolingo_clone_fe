@@ -12,7 +12,7 @@
     :dismissible="false"
   >
     <template #content>
-      <div class="flex items-start gap-4 mb-4">
+      <div class="flex items-start gap-4 mb-4 md:w-xl md:mx-auto md:h-32">
         <div
           class="w-6 h-6 rounded-full flex items-center justify-center mt-0.75"
           :class="isCorrect ? 'bg-green-500 text-white' : 'bg-red-500 text-white'"
@@ -25,7 +25,7 @@
 
         <div class="flex-1">
           <h3
-            class="text-2xl font-black mb-1"
+            class="text-2xl md:text-3xl font-black mb-1"
             :class="isCorrect ? 'text-green-600' : 'text-red-600'"
           >
             {{ isCorrect ? 'Luar Biasa!' : 'Kurang Tepat' }}
@@ -44,7 +44,7 @@
 
             <span
               v-if="question?.content?.explanation"
-              class="font-normal opacity-90"
+              class="font-normal md:text-lg opacity-90"
             >
               {{ question?.content?.explanation }}
             </span>
@@ -53,7 +53,7 @@
       </div>
 
       <BaseButton
-        class="w-full h-12"
+        class="w-full md:w-xl md:mx-auto h-12"
         color="primary"
         @click="$emit('next')"
       >

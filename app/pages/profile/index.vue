@@ -4,11 +4,11 @@
     class="min-h-[calc(100vh-5rem)] relative bg-bg pb-24"
   >
     <div class="py-6 flex flex-col gap-4">
-      <div class="flex justify-center h-40 bg-gray-300 dark:bg-gray-600 rounded-2xl relative">
+      <div class="flex justify-center h-40 md:h-56 bg-gray-300 dark:bg-gray-600 rounded-2xl relative">
         <img
           :src="String(authStore.user?.avatar_url)"
           alt="User Profile"
-          class="rounded-full w-20 h-20 absolute bottom-4"
+          class="rounded-full w-20 h-20 md:w-32 md:h-32 absolute bottom-4"
           :draggable="false"
         >
       </div>

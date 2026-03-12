@@ -6,9 +6,11 @@
     <div class="p-1 rounded-lg flex gap-2 items-center hover:bg-surface-grey transition-colors duration-200 ease-in cursor-default">
       <UIcon
         :name="icon"
-        class="size-5"
+        class="size-5 md:size-7"
       />
-      <p>{{ value }}</p>
+      <p class="md:text-lg">
+        {{ value }}
+      </p>
     </div>
 
     <template #content>

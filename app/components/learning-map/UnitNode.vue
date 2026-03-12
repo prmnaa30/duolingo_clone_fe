@@ -29,7 +29,7 @@ const handleClick = () => {
     />
 
     <div
-      class="w-16 h-16 rounded-full flex items-center justify-center shadow-[0_4px_0_0_rgba(0,0,0,0.2)] ring-4 ring-offset-2 ring-offset-bg transition-all active:translate-y-1 active:shadow-none"
+      class="w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center shadow-[0_4px_0_0_rgba(0,0,0,0.2)] ring-4 ring-offset-2 ring-offset-bg transition-all active:translate-y-1 active:shadow-none"
       :class="statusColor"
     >
       <UIcon

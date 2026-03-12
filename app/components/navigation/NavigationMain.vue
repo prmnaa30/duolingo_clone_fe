@@ -1,7 +1,7 @@
 <template>
   <nav>
     <div class="hidden md:block">
-      <!-- TODO: Add desktop navbar here -->
+      <DesktopSidebar />
     </div>
 
     <div class="block md:hidden">
@@ -11,6 +11,7 @@
 </template>
 
 <script setup lang="ts">
+import DesktopSidebar from './DesktopSidebar.vue'
 import MobileNavbar from './MobileNavbar.vue'
 </script>
 

@@ -1,12 +1,12 @@
 <template>
   <div class="min-h-screen bg-bg flex flex-col relative">
-    <div class="bg-surface/80 backdrop-blur-md border-b border-grey px-4 pt-4 sticky top-0 z-40">
+    <div class="md:bg-transparent bg-surface/80 backdrop-blur-md border-b border-grey px-4 pt-4 sticky top-0 z-40">
       <UContainer
         v-if="unitData"
       >
         <div class="flex gap-2 items-center">
           <button
-            class="p-2 pb-0.5 rounded-md bg-grey border border-[color-mix(in_srgb,var(--color-grey),20%_black)] hover:bg-gray-400/70 cursor-pointer transition-colors duration-200 ease-in"
+            class="md:hidden block p-2 pb-0.5 rounded-md bg-grey border border-[color-mix(in_srgb,var(--color-grey),20%_black)] hover:bg-gray-400/70 cursor-pointer transition-colors duration-200 ease-in"
             @click="router.push('/learning-map')"
           >
             <UIcon
@@ -14,12 +14,12 @@
               class="text-text-title size-6"
             />
           </button>
-          <h1 class="text-lg font-bold text-text-title leading-tight">
+          <h1 class="text-lg md:text-xl font-bold text-text-title leading-tight">
             {{ unitData.name }}
           </h1>
         </div>
 
-        <p class="text-xs text-text-muted text-justify mt-1">
+        <p class="text-xs md:text-sm text-text-muted text-justify mt-1">
           Topik: {{ unitData.topic }}
         </p>
 
@@ -29,6 +29,7 @@
           class="w-full"
           :content="false"
           :ui="{
+            trigger: 'w-full',
             content: 'hidden'
           }"
           variant="link"

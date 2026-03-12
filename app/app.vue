@@ -4,15 +4,16 @@ useHead({
     { name: 'viewport', content: 'width=device-width, initial-scale=1' }
   ],
   link: [
-    { rel: 'icon', href: '/favicon.ico' }
+    { rel: 'icon', href: '/favicon.ico' },
+    { rel: 'preload', href: '/sounds/sprite_assets.mp3' }
   ],
   htmlAttrs: {
     lang: 'en'
   }
 })
 
-const title = 'Nuxt Starter Template'
-const description = 'A production-ready starter template powered by Nuxt UI. Build beautiful, accessible, and performant applications in minutes, not hours.'
+const title = 'MeowLingo'
+const description = 'Learn Language with AI Feedback!'
 
 useSeoMeta({
   title,
@@ -23,8 +24,6 @@ useSeoMeta({
   twitterImage: 'https://ui.nuxt.com/assets/templates/nuxt/starter-light.png',
   twitterCard: 'summary_large_image'
 })
-
-const _audioStore = useAudioStore()
 </script>
 
 <template>

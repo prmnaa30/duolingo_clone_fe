@@ -1,6 +1,6 @@
 <template>
-  <header class="bg-surface h-12">
-    <UContainer class="flex gap-4 items-center h-full overflow-hidden">
+  <header class="bg-surface md:rounded-xl md:mt-8 md:border-2 md:border-accented h-12 md:h-16">
+    <UContainer class="flex gap-4 md:gap-6 items-center md:justify-center h-full overflow-hidden">
       <StatPopover
         icon="i-noto-v1:flag-for-flag-japan"
         :value="userStats?.xp || 0"

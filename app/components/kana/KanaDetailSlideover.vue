@@ -4,7 +4,7 @@
     side="bottom"
   >
     <template #content>
-      <div class="flex flex-col h-full bg-surface">
+      <div class="flex flex-col h-full bg-surface md:w-xl md:mx-auto">
         <div class="flex items-center justify-between p-4 border-b border-grey">
           <h3 class="text-lg font-bold text-text-title">
             Detail Huruf

@@ -6,7 +6,7 @@
     <template #content>
       <article
         v-motion-slide-visible-once-bottom
-        class="bg-surface rounded-3xl mt-4 p-6 sm:p-8 overflow-y-auto"
+        class="bg-surface rounded-3xl mt-4 p-6 sm:p-8 overflow-y-auto md:w-xl md:mx-auto"
       >
         <div
           class="prose prose-stone max-w-none

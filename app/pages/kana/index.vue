@@ -1,12 +1,12 @@
 <template>
-  <div class="min-h-screen bg-bg flex flex-col relative pb-24">
-    <div class="bg-surface/80 backdrop-blur-md border-b border-grey px-4 py-4 sticky top-0 z-40">
+  <UContainer class="min-h-screen bg-bg flex flex-col relative pb-24">
+    <div class="bg-surface/80 md:bg-transparent backdrop-blur-md border-b border-grey px-4 py-4 sticky top-0 z-40">
       <UContainer class="max-w-2xl mx-auto flex gap-4 items-center">
-        <div>
-          <h1 class="text-xl font-extrabold text-text-title">
+        <div class="md:w-full">
+          <h1 class="text-xl md:text-2xl font-extrabold text-text-title md:text-center">
             Daftar Kana
           </h1>
-          <p class="text-xs text-text-muted">
+          <p class="text-sm md:text-md text-text-muted md:text-center">
             Pilih huruf untuk mulai berlatih
           </p>
         </div>
@@ -28,6 +28,10 @@
         <UTabs
           :items="tabItems"
           class="w-full"
+          :ui="{
+            trigger: 'w-full',
+            label: 'uppercase font-bold'
+          }"
         >
           <template #hiragana>
             <div class="mt-6">
@@ -54,7 +58,7 @@
       v-model:is-open="isSlideoverOpen"
       :character="selectedCharacter"
     />
-  </div>
+  </UContainer>
 </template>
 
 <script setup lang="ts">

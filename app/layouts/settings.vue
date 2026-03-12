@@ -1,13 +1,13 @@
 <template>
   <UPage>
     <header class="sticky top-0 z-50 bg-surface">
-      <div class="h-12 flex items-center justify-center relative">
+      <div class="h-12 md:ml-64 md:w-1/2 flex items-center justify-center relative">
         <p class="text-text-muted font-bold text-lg text-center">
           {{ getPageTitle() }}
         </p>
 
         <button
-          class="transition-colors cursor-pointer duration-200 hover:bg-accented absolute rounded-full p-1"
+          class="transition-colors block md:hidden cursor-pointer duration-200 hover:bg-accented absolute rounded-full p-1"
           :class="getPageTitle() !== 'Settings' ? 'left-2' : 'right-2 px-2 text-primary'"
           @click="handleClick"
         >
@@ -28,11 +28,17 @@
       <USeparator />
     </header>
 
-    <slot />
+    <DesktopSidebar class="md:block hidden" />
+
+    <UMain class="md:ml-64 md:px-8 md:w-1/2">
+      <slot />
+    </UMain>
   </UPage>
 </template>
 
 <script setup lang="ts">
+import DesktopSidebar from '~/components/navigation/DesktopSidebar.vue'
+
 const authStore = useAuthStore()
 const route = useRoute()
 const router = useRouter()
