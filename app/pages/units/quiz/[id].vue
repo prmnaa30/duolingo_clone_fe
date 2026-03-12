@@ -94,7 +94,7 @@ const currentAnswer = ref<string | null>(null)
 const showFeedback = ref(false)
 
 const isChecking = ref(false)
-let checkTimeout: number | null | undefined = null
+let checkTimeout: ReturnType<typeof setTimeout> | null | undefined = null
 const isCorrect = ref(false)
 const isAnswered = ref(false)
 
@@ -174,9 +174,6 @@ const handleCheck = () => {
 
 const handleNext = async () => {
   showFeedback.value = false
-  isCorrect.value = false
-  isAnswered.value = false
-  currentAnswer.value = null
 
   if (quizStore.isLastQuestion) {
     await quizStore.submitQuiz()
@@ -189,6 +186,10 @@ const handleNext = async () => {
   } else {
     quizStore.nextQuestion()
   }
+
+  isCorrect.value = false
+  isAnswered.value = false
+  currentAnswer.value = null
 }
 
 const handleExit = (shouldClearProgress: boolean) => {

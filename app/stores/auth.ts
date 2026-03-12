@@ -57,7 +57,10 @@ export const useAuthStore = defineStore('auth', () => {
 
     try {
       const response = await $fetch<{ data: User }>(`${BASE_API}/me`, {
-        headers: { authorization: `Bearer ${token.value}` }
+        headers: {
+          'Authorization': `Bearer ${token.value}`,
+          'ngrok-skip-browser-warning': 'true'
+        }
       })
 
       user.value = response.data as User
@@ -103,6 +106,7 @@ export const useAuthStore = defineStore('auth', () => {
       loading.value = true
 
       const response = await $fetch<AuthResponse>(`${BASE_API}/auth/login`, {
+        headers: { 'ngrok-skip-browser-warning': 'true' },
         method: 'POST',
         body: payload
       })
@@ -128,6 +132,7 @@ export const useAuthStore = defineStore('auth', () => {
       loading.value = true
 
       const response = await $fetch<AuthResponse>(`${BASE_API}/auth/register`, {
+        headers: { 'ngrok-skip-browser-warning': 'true' },
         method: 'POST',
         body: payload
       })
