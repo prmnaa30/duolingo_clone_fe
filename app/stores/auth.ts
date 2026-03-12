@@ -41,7 +41,10 @@ export const useAuthStore = defineStore('auth', () => {
   const toast = useToast()
 
   // * states * //
-  const token = useCookie('auth')
+  const token = useCookie('auth', {
+    maxAge: 60 * 60 * 24 * 7,
+    watch: true
+  })
   const user = ref<User | null>(null)
   const loading = ref(false)
   const googleLoginUrl = ref<string | null>(null)
@@ -67,7 +70,9 @@ export const useAuthStore = defineStore('auth', () => {
     } catch (error: any) {
       console.error('Error saat mengambil data user', error)
 
-      if (error.statusCode) {
+      const status = error.response?.status || error.statusCode
+
+      if (status === 401) {
         token.value = null
         user.value = null
 

@@ -11,9 +11,18 @@ export default defineNuxtRouteMiddleware(async (to) => {
     try {
       await authStore.fetchUser()
     } catch (error: any) {
-      if (error.statusCode === 401 && to.path !== '/login') {
+      const status = error.response?.status || error.statusCode
+
+      if (status === 401 && to.path !== '/login') {
         return navigateTo('/login')
       }
     }
+  }
+
+  const publicRoutes = ['/login', '/register', '/auth']
+  const isPublicRoute = publicRoutes.some(route => to.path.startsWith(route))
+
+  if (!token.value && !isPublicRoute) {
+    return navigateTo('/login')
   }
 })
