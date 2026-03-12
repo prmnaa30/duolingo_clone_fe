@@ -19,7 +19,7 @@ export default defineNuxtRouteMiddleware(async (to) => {
     }
   }
 
-  const publicRoutes = ['/login', '/register', '/auth']
+  const publicRoutes = ['/', '/login', '/register', '/auth']
   const isPublicRoute = publicRoutes.some(route => to.path.startsWith(route))
 
   if (!token.value && !isPublicRoute) {
