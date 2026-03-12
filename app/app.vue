@@ -1,8 +1,20 @@
+<template>
+  <UApp :toaster="{ position: 'top-center' }">
+    <VitePwaManifest />
+
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+
+    <PwaInstallPrompt />
+  </UApp>
+</template>
+
 <script setup>
+import PwaInstallPrompt from './components/PwaInstallPrompt.vue'
+
 useHead({
-  meta: [
-    { name: 'viewport', content: 'width=device-width, initial-scale=1' }
-  ],
+  meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
   link: [
     { rel: 'icon', href: '/favicon.ico' },
     { rel: 'preload', href: '/sounds/sprite_assets.mp3' }
@@ -20,18 +32,16 @@ useSeoMeta({
   description,
   ogTitle: title,
   ogDescription: description,
-  ogImage: 'https://ui.nuxt.com/assets/templates/nuxt/starter-light.png',
-  twitterImage: 'https://ui.nuxt.com/assets/templates/nuxt/starter-light.png',
-  twitterCard: 'summary_large_image'
+
+  ogTitle: title,
+  ogDescription: 'Mulai petualangan belajar bahasa Jepangmu dari nol bersama Mochi di Meowlingo!',
+  ogImage: 'https://meowlingo.vercel.app/images/mochi-og.png',
+  ogUrl: 'https://meowlingo.vercel.app',
+  ogType: 'website',
+
+  twitterCard: 'summary_large_image',
+  twitterTitle: 'Belajar Bahasa Jepang Seru di Meowlingo',
+  twitterDescription: 'Kuasai Hiragana dan Katakana dengan metode seru bersama AI!',
+  twitterImage: 'https://meowlingo.vercel.app/images/mochi-og.png'
 })
 </script>
-
-<template>
-  <UApp :toaster="{ position: 'top-center' }">
-    <VitePwaManifest />
-
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
-  </UApp>
-</template>

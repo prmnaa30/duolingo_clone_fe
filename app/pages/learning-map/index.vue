@@ -72,4 +72,11 @@ onMounted(async () => {
   await authStore.fetchUser()
   await curriculumStore.fetchChapters()
 })
+
+useSeoMeta({
+  title: 'Peta Belajar',
+  description: 'Mulai petualangan belajar bahasa Jepangmu dari nol bersama Mochi di Meowlingo! Dapatkan XP dan jadilah master Hiragana & Katakana.',
+  ogTitle: 'Peta Belajar | Meowlingo',
+  ogDescription: 'Mulai petualangan belajar bahasa Jepangmu dari nol bersama Mochi di Meowlingo!'
+})
 </script>

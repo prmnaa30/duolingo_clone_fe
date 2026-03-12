@@ -39,6 +39,7 @@
     "@eslint/eslintrc": "^3.3.3",
     "@iconify-json/noto-v1": "^1.2.5",
     "@nuxt/eslint": "^1.15.1",
+    "@nuxtjs/seo": "^3.4.0",
     "@tailwindcss/typography": "^0.5.19",
     "@types/dompurify": "^3.0.5",
     "@typescript-eslint/eslint-plugin": "^8.56.0",

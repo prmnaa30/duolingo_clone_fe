@@ -130,4 +130,11 @@ const unitData = computed<UnitData | null>(() => {
 onMounted(() => {
   authStore.fetchUser()
 })
+
+useSeoMeta({
+  title: () => `${unitData.value?.name || 'Unit'} - Panduan Belajar`,
+  description: () => `Pelajari materi ${unitData.value?.topic || 'Bahasa Jepang'} dan taklukkan kuisnya di Meowlingo!`,
+  ogTitle: () => `${unitData.value?.name || 'Unit'} | Meowlingo`,
+  ogDescription: () => `Pelajari materi ${unitData.value?.topic || 'Bahasa Jepang'} dan taklukkan kuisnya di Meowlingo!`
+})
 </script>

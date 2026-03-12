@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
@@ -9,14 +10,37 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@vueuse/motion',
     '@vueuse/sound/nuxt',
-    '@nuxt/fonts'
+    '@nuxt/fonts',
+    '@nuxtjs/seo'
   ],
 
   devtools: {
     enabled: true
   },
 
+  app: {
+    head: {
+      htmlAttrs: {
+        lang: 'id'
+      },
+      charset: 'utf-8',
+      viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no',
+      titleTemplate: '%s | Meowlingo',
+      title: 'Meowlingo - Belajar Bahasa Jepang',
+      meta: [
+        { name: 'theme-color', content: '#ffffff' }
+      ]
+    }
+  },
+
   css: ['~/assets/css/main.css'],
+
+  site: {
+    url: 'https://meowlingo.vercel.app',
+    name: 'Meowlingo',
+    description: 'Platform belajar Bahasa Jepang yang seru dan interaktif bersama Mochi.',
+    defaultLocale: 'id'
+  },
 
   colorMode: {
     preference: 'system',
@@ -67,13 +91,14 @@ export default defineNuxtConfig({
     registerType: 'autoUpdate',
     workbox: {
       navigateFallback: '/',
+      navigateFallbackDenylist: [/^\/auth\/callback/],
       globPatterns: ['**/*.{js,css,html,png,svg,ico,webp,mp3}']
     },
     manifest: {
       name: 'Meowlingo',
       short_name: 'Meowlingo',
       description: 'Belajar Bahasa Jepang bersama Mochi!',
-      theme_color: '#F97316',
+      theme_color: '#ffffff',
       background_color: '#ffffff',
       display: 'standalone',
       orientation: 'portrait',
@@ -100,6 +125,27 @@ export default defineNuxtConfig({
     devOptions: {
       enabled: true,
       type: 'module'
+    }
+  },
+
+  seo: {
+    redirectToCanonicalSiteUrl: true
+  },
+
+  sitemap: {
+    urls: async () => {
+      try {
+        const response = await $fetch<any>(`${process.env.NUXT_PUBLIC_BASE_API}/units`)
+
+        return response.data.map((unit: any) => ({
+          loc: `/units/${unit.id}`,
+          changefreq: 'weekly',
+          priority: 0.8
+        }))
+      } catch (error) {
+        console.error('Gagal mengambil data untuk sitemap', error)
+        return []
+      }
     }
   },
 

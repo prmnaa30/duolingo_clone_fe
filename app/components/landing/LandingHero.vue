@@ -4,7 +4,7 @@
     description="A scalable Japanese learning platform powered by Generative AI and Nuxt. Experience a modern architecture designed for adaptive learning, gamification, and real-time feedback."
     reverse
     :ui="{
-      container: 'gap-0! pt-16!'
+      container: 'gap-8! pt-16!'
     }"
   >
     <template #links>
