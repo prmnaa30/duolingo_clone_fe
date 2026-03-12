@@ -1,12 +1,11 @@
-export default defineNuxtPlugin((nuxtApp) => {
-  const api = $fetch.create({
-    onRequest(context) {
-      const { options } = context
-      options.headers = options.headers || {};
+export default defineNuxtPlugin(() => {
+  globalThis.$fetch = $fetch.create({
+    onRequest({ options }) {
+      const headers = new Headers(options.headers)
 
-      (options.headers as unknown as Record<string, string>)['ngrok-skip-browser-warning'] = 'true'
+      headers.set('ngrok-skip-browser-warning', 'true')
+
+      options.headers = headers
     }
   })
-
-  nuxtApp.provide('api', api)
 })
