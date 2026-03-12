@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useApi } from '~/composables/useApi'
-
 interface GoogleRedirectResponse {
   url: string
 }
@@ -41,7 +39,6 @@ export const useAuthStore = defineStore('auth', () => {
   const config = useRuntimeConfig()
   const BASE_API = config.public.baseApi
   const toast = useToast()
-  const $api = useApi()
 
   // * states * //
   const token = useCookie('auth', {
@@ -62,13 +59,26 @@ export const useAuthStore = defineStore('auth', () => {
     if (!token.value) return
 
     try {
-      const response = await $api<{ data: User }>(`${BASE_API}/me`, {
-        headers: { Authorization: `Bearer ${token.value}` }
+      const response = await $fetch<{ data: User }>(`${BASE_API}/me`, {
+        headers: {
+          'Authorization': `Bearer ${token.value}`,
+          'ngrok-skip-browser-warning': 'true'
+        }
       })
 
       user.value = response.data as User
     } catch (error: any) {
       console.error('Error saat mengambil data user', error)
+
+      const status = error.response?.status || error.statusCode
+
+      if (status === 401) {
+        token.value = null
+        user.value = null
+
+        await navigateTo('/login')
+      }
+
       if (import.meta.client) {
         toast.add({
           title: 'Sesi Berakhir',
@@ -76,14 +86,14 @@ export const useAuthStore = defineStore('auth', () => {
           color: 'error'
         })
       }
-
-      throw error
     }
   }
 
   const loginWithGoogle = async () => {
     try {
-      const response = await $api<GoogleRedirectResponse>(`${BASE_API}/auth/google`)
+      const response = await $fetch<GoogleRedirectResponse>(`${BASE_API}/auth/google`, {
+        headers: { 'ngrok-skip-browser-warning': 'true' }
+      })
 
       if (response.url) {
         window.location.href = response.url
@@ -102,7 +112,8 @@ export const useAuthStore = defineStore('auth', () => {
     try {
       loading.value = true
 
-      const response = await $api<AuthResponse>(`${BASE_API}/auth/login`, {
+      const response = await $fetch<AuthResponse>(`${BASE_API}/auth/login`, {
+        headers: { 'ngrok-skip-browser-warning': 'true' },
         method: 'POST',
         body: payload
       })
@@ -127,7 +138,8 @@ export const useAuthStore = defineStore('auth', () => {
     try {
       loading.value = true
 
-      const response = await $api<AuthResponse>(`${BASE_API}/auth/register`, {
+      const response = await $fetch<AuthResponse>(`${BASE_API}/auth/register`, {
+        headers: { 'ngrok-skip-browser-warning': 'true' },
         method: 'POST',
         body: payload
       })
@@ -152,10 +164,10 @@ export const useAuthStore = defineStore('auth', () => {
     try {
       loading.value = true
 
-      const response = await $api(`${config.public.baseApi}/me/update`, {
+      const response = await $fetch(`${config.public.baseApi}/me/update`, {
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${token.value}`
+          authorization: `Bearer ${token.value}`
         },
         body: payload
       })
@@ -186,9 +198,9 @@ export const useAuthStore = defineStore('auth', () => {
     try {
       loading.value = true
 
-      await $api(`${BASE_API}/logout`, {
+      await $fetch(`${BASE_API}/logout`, {
         method: 'POST',
-        headers: { Authorization: `Bearer ${token.value}` }
+        headers: { authorization: `Bearer ${token.value}` }
       })
     } catch (error) {
       console.warn('Logout error: ', error)
