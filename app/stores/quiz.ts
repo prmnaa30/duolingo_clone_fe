@@ -135,6 +135,9 @@ export const useQuizStore = defineStore('quiz', () => {
       result.value = response
 
       await authStore.fetchUser()
+
+      const curriculumStore = useCurriculumStore()
+      await curriculumStore.fetchChapters(true)
     } catch (error: any) {
       console.error('Gagal submit:', error)
 

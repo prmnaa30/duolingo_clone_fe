@@ -22,8 +22,8 @@ export const useCurriculumStore = defineStore('curriculum', () => {
   const loading = ref(false)
 
   // * Methods * //
-  const fetchChapters = async () => {
-    if (chapters.value && chapters.value.length > 0) return
+  const fetchChapters = async (forceRefresh: boolean = false) => {
+    if (!forceRefresh && chapters.value.length > 0) return
 
     loading.value = true
     try {

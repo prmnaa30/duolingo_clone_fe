@@ -38,8 +38,6 @@ const isOpen = defineModel('isOpen', { type: Boolean, default: false })
 
 const router = useRouter()
 const quizStore = useQuizStore()
-const authStore = useAuthStore()
-const curriculumStore = useCurriculumStore()
 
 const md = new MarkdownIt({
   html: true,
@@ -53,8 +51,6 @@ const renderedContent = computed(() => {
 
 const finishAndExit = async () => {
   await router.replace('/learning-map')
-  await authStore.fetchUser()
-  await curriculumStore.fetchChapters()
   quizStore.resetQuiz()
 }
 </script>
