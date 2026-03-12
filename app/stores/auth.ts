@@ -91,9 +91,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   const loginWithGoogle = async () => {
     try {
-      const response = await $fetch<GoogleRedirectResponse>(`${BASE_API}/auth/google`, {
-        headers: { 'ngrok-skip-browser-warning': 'true' }
-      })
+      const response = await $fetch<GoogleRedirectResponse>(`${BASE_API}/auth/google`)
 
       if (response.url) {
         window.location.href = response.url
