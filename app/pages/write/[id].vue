@@ -121,7 +121,7 @@ const isAnalyzing = ref(false)
 const result = ref<{ score: number, feedback: string } | null>(null)
 
 const { data: characterData, pending } = await useFetch<CharacterResponse>(`${config.public.baseApi}/characters/${route.params.id}`, {
-  headers: { authorization: `Bearer ${authStore.token}` }
+  headers: { Authorization: `Bearer ${authStore.token}` }
 })
 
 const character = computed(() => {
@@ -135,7 +135,7 @@ const handleAnalyze = async (base64Image: string) => {
   try {
     const response = await $fetch<AnalyzeResponse>(`${config.public.baseApi}/writing/analyze`, {
       method: 'POST',
-      headers: { authorization: `Bearer ${authStore.token}` },
+      headers: { Authorization: `Bearer ${authStore.token}` },
       body: {
         character_id: route.params.id,
         image: base64Image
@@ -166,7 +166,7 @@ const saveProgress = async (finalScore: number) => {
   try {
     await $fetch(`${config.public.baseApi}/writing/progress`, {
       method: 'POST',
-      headers: { authorization: `Bearer ${authStore.token}` },
+      headers: { Authorization: `Bearer ${authStore.token}` },
       body: {
         character_id: route.params.id,
         score: finalScore

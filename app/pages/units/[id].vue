@@ -119,7 +119,7 @@ const tabItems = [
 ]
 
 const { data: unitDataResponse, pending, error } = await useFetch<UnitData>(`${config.public.baseApi}/units/${route.params.id}`, {
-  headers: { authorization: `Bearer ${authStore.token}` },
+  headers: { Authorization: `Bearer ${authStore.token}` },
   key: `unit-${route.params.id}`
 })
 

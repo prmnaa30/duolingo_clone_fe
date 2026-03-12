@@ -141,7 +141,7 @@ interface LeaderboardApiResponse {
 const currentUserId = authStore.user?.id
 
 const { data: leaderboardResponse } = await useFetch<LeaderboardApiResponse>(`${config.public.baseApi}/leaderboard`, {
-  headers: { authorization: `Bearer ${authStore.token}` }
+  headers: { Authorization: `Bearer ${authStore.token}` }
 })
 
 console.log(leaderboardResponse.value?.data)

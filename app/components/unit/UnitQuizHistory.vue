@@ -172,7 +172,7 @@ interface HistoryResponse {
 }
 
 const { data: historyResponse, pending, error } = await useFetch<HistoryResponse>(`${config.public.baseApi}/quiz/history/${route.params.id}`, {
-  headers: { authorization: `Bearer ${authStore.token}` }
+  headers: { Authorization: `Bearer ${authStore.token}` }
 })
 
 const historyData = computed(() => {

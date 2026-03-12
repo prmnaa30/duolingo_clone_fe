@@ -101,7 +101,7 @@ interface ApiResponse {
 }
 
 const { data: charactersResponse, pending } = await useFetch<ApiResponse>(`${config.public.baseApi}/characters`, {
-  headers: { authorization: `Bearer ${authStore.token}` }
+  headers: { Authorization: `Bearer ${authStore.token}` }
 })
 
 const kanaLayout = [
