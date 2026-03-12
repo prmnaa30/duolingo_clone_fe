@@ -4,7 +4,7 @@
   </UPage>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 definePageMeta({
   colorMode: 'light',
   auth: false,
