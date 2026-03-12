@@ -3,6 +3,9 @@
     title="Meowlingo"
     description="A scalable Japanese learning platform powered by Generative AI and Nuxt. Experience a modern architecture designed for adaptive learning, gamification, and real-time feedback."
     reverse
+    :ui="{
+      container: 'gap-0! pt-16!'
+    }"
   >
     <template #links>
       <BaseButton
@@ -40,7 +43,7 @@
     </template>
     <NuxtImg
       src="/images/mochi.webp"
-      width="250"
+      width="200"
       class="mx-auto"
     />
   </UPageHero>

@@ -2,7 +2,7 @@
   <UForm
     :schema="schema"
     :state="state"
-    class="grid grid-cols-1 gap-4 mt-6"
+    class="grid grid-cols-1 gap-2 mt-6"
     @submit="handleSubmit"
   >
     <UFormField name="name">
@@ -12,7 +12,7 @@
         variant="subtle"
         class="w-full"
         :ui="{
-          base: 'px-4 py-2 rounded-lg ring-2 ring-gray-300 placeholder:text-text-grey placeholder:text-lg text-lg',
+          base: 'px-4 py-2 md:py-3 md:pt-4 rounded-lg ring-2 ring-gray-300 placeholder:text-text-grey placeholder:text-lg text-lg',
           trailing: 'pe-1'
         }"
       >
@@ -53,7 +53,7 @@
         variant="subtle"
         class="w-full"
         :ui="{
-          base: 'px-4 py-2 rounded-lg ring-2 ring-gray-300 placeholder:text-text-grey placeholder:text-lg text-lg',
+          base: 'px-4 py-2 md:py-3 md:pt-4 rounded-lg ring-2 ring-gray-300 placeholder:text-text-grey placeholder:text-lg text-lg',
           trailing: 'pe-1'
         }"
       >
@@ -94,7 +94,7 @@
         variant="subtle"
         class="w-full"
         :ui="{
-          base: 'px-4 py-2 rounded-lg ring-2 ring-gray-300 placeholder:text-text-grey placeholder:text-lg text-lg',
+          base: 'px-4 py-2 md:py-3 md:pt-4 rounded-lg ring-2 ring-gray-300 placeholder:text-text-grey placeholder:text-lg text-lg',
           trailing: 'pe-1'
         }"
         :type="showPassword ? 'text' : 'password'"
@@ -138,7 +138,7 @@
         variant="subtle"
         class="w-full"
         :ui="{
-          base: 'px-4 py-2 rounded-lg ring-2 ring-gray-300 placeholder:text-text-grey placeholder:text-lg text-lg',
+          base: 'px-4 py-2 md:py-3 md:pt-4 rounded-lg ring-2 ring-gray-300 placeholder:text-text-grey placeholder:text-lg text-lg',
           trailing: 'pe-1'
         }"
         :type="showConfirmationPassword ? 'text' : 'password'"
