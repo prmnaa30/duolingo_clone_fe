@@ -135,13 +135,19 @@ export default defineNuxtConfig({
   sitemap: {
     urls: async () => {
       try {
-        const response = await $fetch<any>(`${process.env.NUXT_PUBLIC_BASE_API}/units`)
+        const response = await fetch(`${process.env.NUXT_PUBLIC_BASE_API || ''}/units`)
 
-        return response.data.map((unit: any) => ({
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+
+        const data = await response.json()
+
+        return data.data?.map((unit: any) => ({
           loc: `/units/${unit.id}`,
           changefreq: 'weekly',
           priority: 0.8
-        }))
+        })) || []
       } catch (error) {
         console.error('Gagal mengambil data untuk sitemap', error)
         return []
