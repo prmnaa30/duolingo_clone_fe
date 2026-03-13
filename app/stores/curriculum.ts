@@ -1,3 +1,5 @@
+import { useApi } from '~/composables/useApi'
+
 interface CurriculumResponse {
   id: number
   name: string
@@ -16,6 +18,7 @@ export const useCurriculumStore = defineStore('curriculum', () => {
   const config = useRuntimeConfig()
   const authStore = useAuthStore()
   const toast = useToast()
+  const $api = useApi()
 
   // * States * //
   const chapters = ref<CurriculumResponse[]>([])
@@ -27,8 +30,8 @@ export const useCurriculumStore = defineStore('curriculum', () => {
 
     loading.value = true
     try {
-      const response = await $fetch<{ data: CurriculumResponse[] }>(`${config.public.baseApi}/chapters`, {
-        headers: { authorization: `Bearer ${authStore.token}` },
+      const response = await $api<{ data: CurriculumResponse[] }>(`${config.public.baseApi}/chapters`, {
+        headers: { Authorization: `Bearer ${authStore.token}` },
         onResponseError({ response }) {
           throw new Error(response._data.message || 'Gagal mengambil data')
         }

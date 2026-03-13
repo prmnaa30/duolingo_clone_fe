@@ -1,3 +1,5 @@
+import { useApi } from '~/composables/useApi'
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 interface QuestionContent {
   question: string
@@ -38,6 +40,7 @@ export const useQuizStore = defineStore('quiz', () => {
   const BASE_API = config.public.baseApi
   const authStore = useAuthStore()
   const toast = useToast()
+  const $api = useApi()
 
   // * States * //
   const questions = useSessionStorage<QuizQuestion[]>('quiz_questions', [])
@@ -70,7 +73,7 @@ export const useQuizStore = defineStore('quiz', () => {
     loading.value = true
 
     try {
-      const response = await $fetch<QuizStartResponse>(`${BASE_API}/quiz/start/${id}`, {
+      const response = await $api<QuizStartResponse>(`${BASE_API}/quiz/start/${id}`, {
         headers: { Authorization: `Bearer ${authStore.token}` }
       })
 
@@ -123,7 +126,7 @@ export const useQuizStore = defineStore('quiz', () => {
   const submitQuiz = async () => {
     isSubmittingAnswers.value = true
     try {
-      const response = await $fetch<QuizResult>(`${BASE_API}/quiz/submit`, {
+      const response = await $api<QuizResult>(`${BASE_API}/quiz/submit`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${authStore.token}` },
         body: {
