@@ -144,8 +144,6 @@ const { data: leaderboardResponse } = await useFetch<LeaderboardApiResponse>(`${
   headers: { Authorization: `Bearer ${authStore.token}` }
 })
 
-console.log(leaderboardResponse.value?.data)
-
 const leaderboardData = computed(() => leaderboardResponse.value?.data || [])
 
 const topThree = computed(() => leaderboardData.value.slice(0, 3))

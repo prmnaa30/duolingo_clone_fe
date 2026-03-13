@@ -65,8 +65,6 @@ definePageMeta({
 })
 
 const authStore = useAuthStore()
-
-console.log(authStore.user?.avatar_url)
 </script>
 
 <style scoped>
